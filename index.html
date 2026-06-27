@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus · social landing</title>
+  <!-- Google Font & Font Awesome for clean icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #faf9fe;
+      color: #1b1b2a;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / nav */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+      color: #1b1b2a;
+      text-decoration: none;
+    }
+
+    .logo i {
+      background: linear-gradient(145deg, #6c4eff, #a26eff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2d2d44;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: #6c4eff;
+    }
+
+    .nav-cta {
+      background: #1b1b2a;
+      color: white !important;
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      transition: background 0.25s, transform 0.2s;
+      box-shadow: 0 8px 20px -8px rgba(27, 27, 42, 0.15);
+    }
+
+    .nav-cta:hover {
+      background: #6c4eff !important;
+      color: white !important;
+      transform: scale(1.02);
+    }
+
+    /* hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 48px 0 72px;
+      gap: 40px;
+    }
+
+    .hero-content {
+      flex: 1 1 480px;
+    }
+
+    .hero-content .badge {
+      display: inline-block;
+      background: rgba(108, 78, 255, 0.12);
+      color: #6c4eff;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      padding: 6px 18px;
+      border-radius: 60px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(108, 78, 255, 0.15);
+    }
+
+    .hero-content h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+
+    .hero-content h1 span {
+      background: linear-gradient(135deg, #6c4eff, #b47aff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #4a4a60;
+      max-width: 480px;
+      margin-bottom: 36px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: #1b1b2a;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 16px 40px;
+      border-radius: 60px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 10px 24px -10px rgba(27, 27, 42, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .btn-primary i {
+      font-size: 1.1rem;
+    }
+
+    .btn-primary:hover {
+      background: #6c4eff;
+      transform: translateY(-3px);
+      box-shadow: 0 20px 30px -10px #6c4eff66;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #d9d9e6;
+      color: #1b1b2a;
+      font-weight: 600;
+      padding: 16px 34px;
+      border-radius: 60px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .btn-outline i {
+      color: #6c4eff;
+    }
+
+    .btn-outline:hover {
+      border-color: #6c4eff;
+      background: #f5f2ff;
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #1b1b2a;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #6a6a82;
+      font-weight: 450;
+    }
+
+    .hero-visual {
+      flex: 1 1 400px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .mockup-card {
+      background: white;
+      border-radius: 48px;
+      padding: 24px 24px 30px;
+      box-shadow: 0 40px 70px -20px rgba(0, 0, 0, 0.12), 0 8px 24px -8px rgba(108, 78, 255, 0.08);
+      width: 100%;
+      max-width: 360px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .mockup-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .mockup-avatar {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(145deg, #b47aff, #6c4eff);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.4rem;
+      box-shadow: 0 8px 16px -6px #6c4eff55;
+    }
+
+    .mockup-user {
+      flex: 1;
+    }
+    .mockup-user h4 {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .mockup-user span {
+      color: #7a7a94;
+      font-size: 0.8rem;
+    }
+
+    .mockup-post {
+      background: #f7f6fe;
+      border-radius: 28px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+    .mockup-post p {
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .mockup-post small {
+      color: #6c4eff;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.3px;
+    }
+
+    .mockup-reactions {
+      display: flex;
+      gap: 18px;
+      color: #4a4a60;
+      font-size: 0.9rem;
+    }
+    .mockup-reactions i {
+      margin-right: 4px;
+      color: #6c4eff;
+    }
+
+    /* features */
+    .features {
+      margin: 100px 0 60px;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+    .section-header h2 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .section-header p {
+      color: #4a4a60;
+      font-size: 1.15rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 40px 30px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 32px 24px 28px;
+      border-radius: 40px;
+      box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.04);
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(2px);
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: #d9cfff;
+      box-shadow: 0 24px 40px -18px rgba(108, 78, 255, 0.12);
+    }
+
+    .feature-icon {
+      background: #f0ecff;
+      width: 56px;
+      height: 56px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #6c4eff;
+      font-size: 1.8rem;
+    }
+    .feature-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      color: #5a5a74;
+      font-size: 0.95rem;
+    }
+
+    /* cta section */
+    .cta-section {
+      background: #1b1b2a;
+      border-radius: 60px;
+      padding: 70px 50px;
+      margin: 80px 0 50px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      background-image: radial-gradient(circle at 100% 0%, #322d5a, #12121e);
+    }
+
+    .cta-text h2 {
+      color: white;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .cta-text p {
+      color: #b9b6d6;
+      font-size: 1.1rem;
+      max-width: 400px;
+    }
+
+    .cta-btn-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .cta-btn-group .btn-primary {
+      background: white;
+      color: #1b1b2a;
+      box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.4);
+    }
+    .cta-btn-group .btn-primary:hover {
+      background: #d9cfff;
+      color: #1b1b2a;
+    }
+    .cta-btn-group .btn-outline {
+      border-color: #67638a;
+      color: white;
+    }
+    .cta-btn-group .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: white;
+    }
+
+    .footer {
+      padding: 32px 0 40px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      color: #5f5f7a;
+      border-top: 1px solid #eae8f5;
+      margin-top: 20px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      text-decoration: none;
+      color: #3d3d58;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #6c4eff;
+    }
+    .footer-social i {
+      font-size: 1.4rem;
+      margin-left: 16px;
+      color: #3d3d58;
+      transition: 0.2s;
+    }
+    .footer-social i:hover {
+      color: #6c4eff;
+      transform: scale(1.05);
+    }
+
+    /* responsiveness */
+    @media (max-width: 800px) {
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      .hero-stats {
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+      .cta-section {
+        padding: 40px 28px;
+        border-radius: 40px;
+      }
+      .cta-text h2 {
+        font-size: 2rem;
+      }
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+    }
+    @media (max-width: 500px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .mockup-card {
+        padding: 18px;
+      }
+      .cta-btn-group {
+        width: 100%;
+      }
+      .cta-btn-group .btn-primary,
+      .cta-btn-group .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- navigation -->
+    <nav class="navbar">
+      <a href="#" class="logo">
+        <i class="fas fa-hashtag"></i> Nexus
+      </a>
+      <ul class="nav-links">
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#" class="nav-cta">Get the app</a></li>
+      </ul>
+    </nav>
+
+    <!-- hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge">
+          <i class="fas fa-rocket" style="margin-right: 6px;"></i> v3.0 · now live
+        </div>
+        <h1>Connect deeper,<br /><span>share boldly.</span></h1>
+        <p>
+          Nexus brings your community together with beautiful spaces, live
+          conversations, and the tools you need to express yourself.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary">
+            <i class="fab fa-apple"></i> Download
+          </a>
+          <a href="#" class="btn-outline">
+            <i class="fas fa-play"></i> See it in action
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">12k+</span>
+            <span class="stat-label">active communities</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4.9★</span>
+            <span class="stat-label">user rating</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">8M</span>
+            <span class="stat-label">messages daily</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="mockup-card">
+          <div class="mockup-header">
+            <div class="mockup-avatar">
+              <i class="fas fa-user-astronaut"></i>
+            </div>
+            <div class="mockup-user">
+              <h4>luna.codes</h4>
+              <span><i class="fas fa-circle" style="color: #4ac7a2; font-size: 0.5rem;"></i> online</span>
+            </div>
+            <i class="fas fa-ellipsis-h" style="color: #b0b0c8;"></i>
+          </div>
+          <div class="mockup-post">
+            <p>✨ just launched our new collab space — who’s in?</p>
+            <small><i class="far fa-clock"></i> 2h ago · #creative</small>
+          </div>
+          <div class="mockup-reactions">
+            <span><i class="fas fa-heart"></i> 142</span>
+            <span><i class="fas fa-comment"></i> 28</span>
+            <span><i class="fas fa-retweet"></i> 12</span>
+          </div>
+          <div style="margin-top: 20px; display: flex; gap: 8px;">
+            <span style="background: #eae6fa; padding: 4px 14px; border-radius: 30px; font-size: 0.7rem; font-weight: 600;">#design</span>
+            <span style="background: #eae6fa; padding: 4px 14px; border-radius: 30px; font-size: 0.7rem; font-weight: 600;">#community</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- features -->
+    <section class="features">
+      <div class="section-header">
+        <h2>Everything you need to <span style="background: linear-gradient(135deg,#6c4eff,#b47aff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">grow</span></h2>
+        <p>Designed for real connection, creativity, and moments that matter.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-comment-dots"></i></div>
+          <h3>Live chat & threads</h3>
+          <p>Organized conversations with threaded replies, emoji reactions, and real-time typing.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-users"></i></div>
+          <h3>Circle groups</h3>
+          <p>Create private or public spaces for your friends, teams, or interest-based tribes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-camera"></i></div>
+          <h3>Story & reels</h3>
+          <p>Share fleeting moments with photo, video, and interactive stickers — vanish after 24h.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Privacy first</h3>
+          <p>End-to-end encryption, custom visibility controls, and zero data selling — ever.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- call to action -->
+    <section class="cta-section">
+      <div class="cta-text">
+        <h2>Ready to join the movement?</h2>
+        <p>Download Nexus today and start building your world.</p>
+      </div>
+      <div class="cta-btn-group">
+        <a href="#" class="btn-primary"><i class="fab fa-apple"></i> App Store</a>
+        <a href="#" class="btn-outline"><i class="fab fa-google-play"></i> Google Play</a>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+      <span style="font-weight: 450;">© 2026 Nexus · made with <i class="fas fa-heart" style="color: #6c4eff;"></i></span>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-social">
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-youtube"></i>
+        <i class="fab fa-github"></i>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
